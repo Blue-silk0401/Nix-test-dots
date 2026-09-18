@@ -114,14 +114,11 @@
   gcc
   unzip
   nodejs
-  lua5_1
-  lazygit
-  fzf
-  luarocks #: turn it on if some neiche plugin needs it
+  lua5_1 
+  fzf 
   pyright
   ruff
   tree
-  vimPlugins.LazyVim
   xwayland-satellite
   (python3.withPackages (ps: with ps; [
       numpy

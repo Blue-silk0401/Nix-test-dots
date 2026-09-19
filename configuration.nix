@@ -3,12 +3,13 @@
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.graceful = true;
 
   boot.blacklistedKernelModules = [ "rtl8xxxu" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.rtl8188eus-aircrack ];
@@ -60,6 +61,7 @@
   swapDevices = [
     { device = "/swapfile"; size = 8192; } # size in MB, should be >= RAM amount
   ];
+  
 
   environment.systemPackages = with pkgs; [
   vim # Do not forget to add an editor to edit configuration.nix!
@@ -71,8 +73,8 @@
   zoxide       # smarter cd
   pkgs.tmux         # terminal multiplexer
   wlogout      # graphical logout menu
-  dunst        # notification daemon (replaces mako)
-  hyprlock     # nicer lock screen (replaces swaylock)
+  dunst        # notification daemon
+  hyprlock     # nicer lock screen
   fuzzel
   waybar
   swayidle
@@ -89,7 +91,6 @@
   yazi
   xdg-user-dirs
   mpvpaper
-  neovim
   git
   tealdeer
   xclip
@@ -109,6 +110,7 @@
   zsh-syntax-highlighting   # colors valid/invalid commands
   zsh-autosuggestions       # ghost-text suggestions based on history
   #things for lazy vim
+  tree-sitter
   ripgrep
   fd
   gcc
